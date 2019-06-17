@@ -1,0 +1,22 @@
+$K_WIDTH: 10px;
+$K_HEIGHT: 10px;
+
+.pin {
+  /* Center the pin on the coordinates. */
+  position: absolute;
+  width: $K_WIDTH;
+  height: $K_HEIGHT;
+  left: -$K_WIDTH / 2;
+  top: -$K_HEIGHT / 2;
+
+  /* More or less the basic styles from the google-map-react examples. */
+  background-color: white;
+
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: #3f51b5;
+
+  border: 5px solid #f44336;
+  border-radius: 40px;
+};
