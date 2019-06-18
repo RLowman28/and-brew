@@ -1,0 +1,21 @@
+#breweryDetails {
+    width: 100%;
+    height: auto;
+
+    font-size: 100%;
+}
+
+#breweryDetails strong {
+    line-height: 5%;
+
+    font-size: 200%;
+}
+
+/* Condense the tag emojis and the phone number to one line. */
+#type, #tag-items {
+    float: left;
+}
+
+#tag-items li {
+    display: inline;
+}

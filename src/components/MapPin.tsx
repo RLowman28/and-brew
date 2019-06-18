@@ -1,6 +1,5 @@
 // Import React and the pin styles.
 import React from 'react';
-import '../styles/pinStyle.scss'
 
 // Define and export the type structure and default values for the props object.
 const defaultProps ={
@@ -13,9 +12,9 @@ export type MapPinProps = {
      * 
      * @default 
      */
-    lat?: number;
-    lng?: number;
-} & typeof defaultProps;
+    lat: number;
+    lng: number;
+};
 
 /**
  * Render a map pin component at the given latitude and longitude.

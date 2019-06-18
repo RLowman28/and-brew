@@ -15,6 +15,8 @@ interface StateDictionary {
  *                can be as above, or can be an two-character state abbreviation.
  * 
  * @returns A fetch Promise that will return the result of the API call.
+ * 
+ * @async
  */
 export async function getBreweriesByCityAndState(city: string, state: string): Promise<Response> {
     // Save the state parameter to a new constant, unabbreviating if necessary.
@@ -27,6 +29,27 @@ export async function getBreweriesByCityAndState(city: string, state: string): P
     const response =  await fetch(url);
 
     return response;
+}
+
+/**
+ * This function makes a call to the Google Maps Place API, passing a text
+ *   string to the API and returning a Promise that has location data,
+ *   specifically coordinates, for the nearest result matching the text.
+ * 
+ * @param query An HTML escaped text query.
+ * 
+ * @returns A fetch Promise that will return location data for the query.
+ * 
+ * @async
+ */
+export async function getLocationByQuery(query: string): Promise<Response> {
+    // Query the Google Maps Place API and return a Promise for the location
+    // data corresponding to the query.
+    return await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=AIzaSyC4N8Lko5GhQHxzzUPWoB8mzqBSGg2pKZ4`)
+    /* return await fetch(`https://maps.googleapis.com/maps/api/place/` + 
+                       `findplacefromtext/json?input=${query}&` + 
+                       `inputtype=textquery&fields=geometry&` + 
+                       `key=AIzaSyC4N8Lko5GhQHxzzUPWoB8mzqBSGg2pKZ4`); */
 }
 
 /**

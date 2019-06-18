@@ -1,0 +1,13 @@
+/* The base styles of the app. */
+
+body {
+    background-color: $secondary;
+    
+    font-family: $font-family;
+    color: $font-color;
+}
+
+.column {
+    height: 100vh;
+    align-items: center;
+}

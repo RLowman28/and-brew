@@ -2,7 +2,7 @@
  * The tags accepted by Open Brewery DB.
  */
 export type AcceptableTags = ("dog-friendly" | "patio" | 
-                        "food-service" | "food-trucks" |
+                        "food-service" | "food-truck" |
                         "tours");
 
 /**
