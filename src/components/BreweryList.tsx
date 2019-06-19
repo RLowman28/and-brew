@@ -1,6 +1,5 @@
 // Import the necessary libraries, functions, types, and components.
 import React from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
 import Alert from 'react-bootstrap/Alert';
 import BreweryListItem from './BreweryListItem';
 import { Brewery } from '../types/globalTypes';

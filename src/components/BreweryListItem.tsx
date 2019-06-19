@@ -2,8 +2,6 @@
 import React from 'react';
 import { Brewery } from '../types/globalTypes';
 import { abbreviateState } from '../utils/apiHelpers';
-import ListGroup from 'react-bootstrap/ListGroup';
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 // Define and export the type structure for this component's prop object.
 export type BreweryListItemProps = {
