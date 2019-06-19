@@ -43,15 +43,11 @@ export async function getBreweriesByCityAndState(city: string, state: string): P
  * @async
  */
 export async function getLocationByQuery(query: string): Promise<Response> {
-    // Get the public key, if it is available.
-    const publicKey: string = (process.env.REACT_APP_PUBLIC_KEY !== undefined) ?
-                                process.env.REACT_APP_PUBLIC_KEY : "";
-                                
     // Query the Google Maps Place API and return a Promise for the location
     // data corresponding to the query.
     return await fetch(`https://maps.googleapis.com/maps/api/geocode/json` + 
                         `?address=${query}&key=` + 
-                        `${publicKey}`);
+                        `AIzaSyAx2j1GyIkOhEuQ0NUTp86UWD2xwNe5fUs`);
 }
 
 /**
