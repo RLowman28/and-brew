@@ -122,10 +122,10 @@ export class BreweryList extends React.Component<BreweryListProps, BreweryListSt
         });
 
         // Render the list of BreweryListItems within a ul element.
-        return (<ListGroup id="breweryList" className="align-center"
+        return (<ul id="breweryList" className="list-group align-center"
                 >
                     {listItems}
-                </ListGroup>);
+                </ul>);
     }
 }
 

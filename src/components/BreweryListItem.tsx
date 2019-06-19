@@ -44,16 +44,15 @@ export const BreweryListItem: React.FC<BreweryListItemProps> = (props) => {
                             `${postal_code.substr(0, 5)}`;
 
     // Render a Fragment with all of the data.
-    return (<ListGroupItem
-                className="breweryLI"
-                action
+    return (<li
+                className="list-group-item list-group-item-action breweryLI"
                 onClick={handleListItemClick}
             >
                 <p><strong>{name}</strong> | {brewery_type}</p>
                 <p>{street}</p>
                 <p>{cityStateZIP}</p>
                 <a href={website_url}>Link to {name}</a>
-            </ListGroupItem>);
+            </li>);
 }
 
 // Export the BreweryListItem component as the default export.
