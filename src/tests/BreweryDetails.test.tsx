@@ -30,3 +30,26 @@ afterEach(cleanup);
 it('Tests that the component renders.', () => {
     render(<BreweryDetails brewery={testBrewery} />);
 });
+
+it('Formats the information correctly.', () => {
+    const { queryByText } = render(<BreweryDetails brewery={testBrewery} />);
+
+    // Any of these will throw an error if the
+    expect(queryByText("MadTree Brewing")).not.toBeNull();
+    expect(queryByText("3301 Madison Rd; Cincinnati, OH 45209")).not.toBeNull();
+});
+
+it('Formats the information correctly with data that covers all branches.', () => {
+    // Create a more empty Brewery object.
+    let branchBrewery = testBrewery;
+    branchBrewery.phone = "";
+    branchBrewery.street = "";
+    branchBrewery.tag_list = ['patio', 'dog-friendly', 'food-truck'];
+
+    const { queryByText } = render(<BreweryDetails brewery={branchBrewery} />);
+
+    // Any of these will throw an error if the
+    expect(queryByText("MadTree Brewing")).not.toBeNull();
+    expect(queryByText("http://www.madtreebrewing.com")).not.toBeNull();
+    expect(queryByText("Cincinnati, OH 45209")).not.toBeNull();
+});

@@ -2,7 +2,9 @@
 import React from 'react';
 import BreweryListItem from '../components/BreweryListItem';
 import { Brewery } from '../types/globalTypes';
-import { render, cleanup } from '@testing-library/react';
+import { render, 
+         fireEvent,
+         cleanup } from '@testing-library/react';
 
 // Set a static brewery object for testing this component.
 const testBrewery: Brewery = {
@@ -28,5 +30,24 @@ const testBrewery: Brewery = {
 afterEach(cleanup);
 
 it('Test that the component renders.', () => {
-    render(<BreweryListItem brewery={testBrewery} />);
+    render(<BreweryListItem brewery={testBrewery} onListItemClick={jest.fn} />);
 });
+
+it('Passes the brewery stored in the list item when clicked.', () => {
+    // Expect an assertion to be called.
+    expect.assertions(1);
+    
+    // Set up a mock click handler and a variable for testing.
+    const mockClickHandler = jest.fn((brewery: Brewery) => {
+        expect(brewery.id).toEqual(5494);
+    });
+
+    // Render the component with the mock handler.
+    const { getByText } = render(<BreweryListItem 
+                                    brewery={testBrewery} 
+                                    onListItemClick={mockClickHandler}
+                                />);
+
+    // Fire a click event on the element.
+    fireEvent.click(getByText("MadTree Brewing"));
+})

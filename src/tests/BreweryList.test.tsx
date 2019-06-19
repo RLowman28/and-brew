@@ -28,7 +28,7 @@ const testBrewery: Brewery = {
 afterEach(cleanup);
 
 it('Test that the component renders.', () => {
-    render(<BreweryList  />);
+    render(<BreweryList onBreweryItemClick={jest.fn} />);
 });
 
 it('Check that the list contains bars from the default city.', () => {
@@ -37,7 +37,7 @@ it('Check that the list contains bars from the default city.', () => {
     const defaultState = 'virginia';
     
     // Render the brewery list and get the container.
-    const { container, queryAllByText } = render(<BreweryList />);
+    const { container, queryAllByText } = render(<BreweryList onBreweryItemClick={jest.fn} />);
 
     // Get the breweries in the default city and check that their
     // names are on the list.

@@ -28,13 +28,21 @@ const testBrewery: Brewery = {
 afterEach(cleanup);
 
 it('Tests that the component renders.', () => {
-    render(<BreweryDetailsContainer brewery={testBrewery} />);
+    render(<BreweryDetailsContainer 
+                brewery={testBrewery}
+                renderBackButton 
+                onBackToList={jest.fn}
+            />);
 });
 
 it('Component contains a unique map and a pin.', () => {
     // Get the container that the testing library renders the component in,
     // and pull the map and map pin off the 
-    const { container } = render(<BreweryDetailsContainer brewery={testBrewery} />);
+    const { container } = render(<BreweryDetailsContainer
+                                    brewery={testBrewery}
+                                    renderBackButton
+                                    onBackToList={jest.fn}
+                                />);
     const map = container.querySelectorAll('#googleMap');
     const pin = container.querySelectorAll('.pin');
 

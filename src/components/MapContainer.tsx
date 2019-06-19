@@ -63,6 +63,10 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
    *   passed from the parent component.
    */  
   render() {
+    // Get the public key, if it is available.
+    const publicKey: string = (process.env.REACT_APP_PUBLIC_KEY === undefined) ?
+                                "" : process.env.REACT_APP_PUBLIC_KEY;
+                                
     // If there was an error while getting the coordinates needed to render
     // the map.'
     if (this.props.error) {
@@ -77,7 +81,7 @@ export class MapContainer extends React.Component<MapContainerProps, MapContaine
     return (
       <div id="googleMap">
         <GoogleMap
-          bootstrapURLKeys={{ key: 'AIzaSyC4N8Lko5GhQHxzzUPWoB8mzqBSGg2pKZ4' }}
+          bootstrapURLKeys={{ key: publicKey }}
           center={this.state.center}
           defaultZoom={this.props.zoom}
         >

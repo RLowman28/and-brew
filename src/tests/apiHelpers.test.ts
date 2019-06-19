@@ -1,14 +1,15 @@
 // Import the functions to be tested.
 import { getBreweriesByCityAndState,
          unabbreviateState,
-         abbreviateState } from "../utils/apiHelpers";
+         abbreviateState, 
+         getLocationByQuery} from "../utils/apiHelpers";
 
 // Just some quick setup work to test the translators.
 interface StateDictionary {
     [key: string]: string
 }
 
-describe('Test the function that makes the API call.', () => {
+describe('Test the function that makes the Open Brewery DB API call.', () => {
     it('Check that the function makes a call and returns a Promise.', () => {
         const response = getBreweriesByCityAndState("", "");
         expect(response).toBeInstanceOf(Promise);
@@ -25,6 +26,40 @@ describe('Test the function that makes the API call.', () => {
         const results = await response.json();
         expect(results).toBeInstanceOf(Array);
         expect(results.length).toBeGreaterThan(0);
+    });
+
+    it('Check that the function returns the same result whether a full' +
+            'state name or abbreviation is used.', async () => {
+        const fullNameResp = await getBreweriesByCityAndState("blacksburg", "virginia");
+        const abbrResp = await getBreweriesByCityAndState("blacksburg", "va");
+
+        const fullNameResults = await fullNameResp.json();
+        const abbrResults = await abbrResp.json();
+
+        // Check that the responses and the results are equal in all fields.
+        expect(abbrResp).toEqual(fullNameResp);
+        expect(abbrResults).toEqual(fullNameResults);
+    });
+});
+
+describe('Test the function that makes the Google Maps API call.', () => {
+    it('Check that the function makes a call and returns a Promise.', () => {
+        const response = getLocationByQuery("");
+        expect(response).toBeInstanceOf(Promise);
+    });
+
+    it('Check that the function returns results ' +
+        'when passed valid arguments.', async () => {
+        //Query the API and check that the status is ok.
+        const response = await getLocationByQuery(encodeURI("blacksburg, virginia"));
+        expect(response.ok).toBeTruthy();
+
+        // Parse the results and check that they are a non-empy
+        // array of breweries.
+        const results = await response.json();
+        expect(results).toBeInstanceOf(Object);
+        expect(typeof results.results[0].geometry.location.lat).toBe('number');
+        expect(typeof results.results[0].geometry.location.lng).toBe('number');
     });
 
     it('Check that the function returns the same result whether a full' +
