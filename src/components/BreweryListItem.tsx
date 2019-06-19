@@ -3,6 +3,7 @@ import React from 'react';
 import { Brewery } from '../types/globalTypes';
 import { abbreviateState } from '../utils/apiHelpers';
 import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 // Define and export the type structure for this component's prop object.
 export type BreweryListItemProps = {
@@ -43,7 +44,7 @@ export const BreweryListItem: React.FC<BreweryListItemProps> = (props) => {
                             `${postal_code.substr(0, 5)}`;
 
     // Render a Fragment with all of the data.
-    return (<ListGroup.Item
+    return (<ListGroupItem
                 className="breweryLI"
                 action
                 onClick={handleListItemClick}
@@ -52,7 +53,7 @@ export const BreweryListItem: React.FC<BreweryListItemProps> = (props) => {
                 <p>{street}</p>
                 <p>{cityStateZIP}</p>
                 <a href={website_url}>Link to {name}</a>
-            </ListGroup.Item>);
+            </ListGroupItem>);
 }
 
 // Export the BreweryListItem component as the default export.
