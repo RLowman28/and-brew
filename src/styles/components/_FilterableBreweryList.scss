@@ -1,0 +1,14 @@
+#breweryList {
+    height: 100vh;
+    width: 100%;
+
+    overflow: scroll;
+}
+
+#filterTextInput {
+    width: 100%;
+    height: 7.5vh;
+
+    color: $font-color;
+    font-size: 200%;
+}

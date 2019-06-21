@@ -108,7 +108,7 @@ export class App extends React.Component<AppProps, AppState> {
       // Render the brewery list if no brewery is selected, or the details
       // for the selected brewery.
       return ((this.state.selectedBrewery === null) ?
-                <BreweryList onBreweryItemClick={this.onBrewerySelect} /> :
+                <BreweryList onBrewerySelect={this.onBrewerySelect} /> :
                 <BreweryDetailsContainer
                   brewery={this.state.selectedBrewery}
                   renderBackButton={this.state.renderCompact}
@@ -120,7 +120,7 @@ export class App extends React.Component<AppProps, AppState> {
       return (<Container fluid={true}>
                 <Row className="">
                   <Col sm={5} md={4} xl={3}>
-                    <BreweryList onBreweryItemClick={this.onBrewerySelect} />
+                    <BreweryList onBrewerySelect={this.onBrewerySelect} />
                   </Col>
                   <Col sm={7} md={8} xl={9}>
                     <BreweryDetailsContainer 
